@@ -292,7 +292,7 @@
 
     searchInput.addEventListener('input', renderPosts);
 
-    fetch('/posts/posts.json')
+    fetch('../posts/posts.json'))
       .then(res => {
         if (!res.ok) throw new Error('Failed to load posts.json');
         return res.json();
