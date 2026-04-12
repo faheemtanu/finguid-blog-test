@@ -1,1 +1,315 @@
 
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Finguid Money Guides | US Calculator Blog</title>
+  <meta name="description" content="US-focused money guides tightly linked to Finguid calculators. Learn mortgages, loans, investing, retirement and taxes using real American examples." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  <link rel="canonical" href="https://www.finguid.com/blog" />
+  <meta property="og:title" content="Finguid Money Guides | US Calculator Blog" />
+  <meta property="og:description" content="Money guides for Americans with built-in calculator links for mortgages, auto loans, retirement, and taxes." />
+  <meta property="og:type" content="blog" />
+  <meta property="og:url" content="https://www.finguid.com/blog" />
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "name": "Finguid Money Guides",
+    "url": "https://www.finguid.com/blog",
+    "description": "US-focused money guides with direct links to Finguid calculators.",
+    "publisher": {"@type": "Organization", "name": "Finguid"}
+  }
+  </script>
+  <style>
+    :root{--primary:#24acb9;--primary-dark:#19343b;--accent:#ffc107;--text:#e1e8ed;--text-light:#b8c5d0;--bg:#0b1120;--bg-elevated:#020617;--card:#020617;--border:#1f2937;--radius:12px;--shadow:0 8px 24px rgba(0,0,0,.5);--content:1120px}
+    [data-theme="light"]{--text:#1f2121;--text-light:#64748b;--bg:#ffffff;--bg-elevated:#f5f7fa;--card:#ffffff;--border:#e2e8f0;--shadow:0 4px 14px rgba(15,23,42,.08)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"Helvetica Neue",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;transition:background .25s ease,color .25s ease}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .blog-shell{max-width:var(--content);margin:0 auto;padding:1.4rem 1.25rem 3rem}
+    .topbar{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap;padding-bottom:1rem}
+    .brand{display:flex;align-items:center;gap:.5rem;font-weight:700;color:var(--primary)}
+    .brand-mark{width:30px;height:30px;border-radius:999px;background:var(--primary);display:grid;place-items:center;color:#fff;font-size:.8rem;box-shadow:0 0 18px rgba(36,172,185,.6)}
+    .brand span:last-child{letter-spacing:.03em;font-size:18px}
+    .top-actions{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+    .btn-nav,.icon-btn{border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text-light);cursor:pointer;font-size:.86rem;font-weight:600;padding:.55rem .95rem;display:inline-flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s,background .2s,transform .1s}
+    .icon-btn{width:38px;height:38px;padding:0;font-size:.9rem}
+    .btn-nav:hover,.icon-btn:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-1px)}
+    .blog-hero{padding:1.5rem 0 1.3rem;border-bottom:1px solid var(--border)}
+    .blog-kicker{text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;color:var(--text-light);margin-bottom:.35rem}
+    .blog-title{font-size:clamp(2rem,4vw,2.7rem);margin-bottom:.4rem}
+    .blog-subtitle{font-size:.96rem;color:var(--text-light);max-width:46rem}
+    .blog-meta-row{display:flex;flex-wrap:wrap;gap:.75rem;margin-top:.9rem;font-size:.8rem;color:var(--text-light)}
+    .blog-meta-pill{padding:.25rem .6rem;border-radius:999px;border:1px solid var(--border);background:var(--card)}
+    .blog-controls{display:flex;flex-wrap:wrap;gap:.75rem;margin:1.45rem 0 1rem;align-items:center}
+    .blog-search{flex:1 1 260px;position:relative}
+    .blog-search input{width:100%;border-radius:999px;border:1px solid var(--border);padding:.62rem 2.4rem .62rem .9rem;font-size:.9rem;outline:none;background:var(--card);color:var(--text)}
+    .blog-search input:focus{border-color:var(--primary);box-shadow:0 0 0 1px rgba(36,172,185,.28)}
+    .blog-search-icon{position:absolute;right:.85rem;top:50%;transform:translateY(-50%);font-size:.88rem;color:#94a3b8}
+    .topic-pills{display:flex;flex-wrap:wrap;gap:.45rem}
+    .topic-pill{padding:.32rem .78rem;border-radius:999px;border:1px solid var(--border);background:var(--card);color:#e2e8f0;cursor:pointer;font-size:.82rem}
+    .topic-pill.active{background:var(--primary);border-color:var(--primary);color:#fff}
+    .blog-layout{display:grid;grid-template-columns:minmax(0,2.2fr) minmax(0,1fr);gap:1.7rem;margin-top:1.4rem}
+    .post-list{display:grid;grid-template-columns:minmax(0,1fr);gap:1rem}
+    .post-card{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:1rem .95rem;display:grid;grid-template-columns:minmax(0,3fr) minmax(0,1.4fr);gap:1rem;align-items:start;transition:box-shadow .2s ease,transform .2s ease}
+    .post-card:hover{box-shadow:0 6px 20px rgba(0,0,0,.45);transform:translateY(-1px)}
+    .post-tag-row{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.4rem;font-size:.76rem;color:var(--text-light)}
+    .post-tag{padding:.2rem .55rem;border-radius:999px;background:#0f172a}
+    [data-theme="light"] .post-tag{background:#f1f5f9}
+    .post-title{font-size:1.05rem;margin:0 0 .3rem}
+    .post-title a:hover{color:var(--primary)}
+    .post-meta{font-size:.76rem;color:#94a3b8;margin-bottom:.45rem}
+    .post-excerpt{font-size:.86rem;color:var(--text-light);margin-bottom:.5rem}
+    .calc-link-box{margin-top:.35rem;padding:.65rem .75rem;border-radius:10px;background:rgba(36,172,185,.08);border:1px solid rgba(36,172,185,.25);font-size:.8rem}
+    [data-theme="light"] .calc-link-box{background:rgba(36,172,185,.06)}
+    .calc-link-box strong{display:block;margin-bottom:.2rem}
+    .post-actions{display:flex;flex-wrap:wrap;gap:.5rem;margin-top:.7rem}
+    .action-btn{border-radius:999px;border:1px solid var(--border);background:var(--bg-elevated);color:var(--text-light);font-size:.82rem;font-weight:600;padding:.42rem .9rem;cursor:pointer;display:inline-flex;align-items:center;gap:.2rem;transition:border-color .2s,color .2s,background .2s}
+    .action-btn:hover{border-color:var(--primary);color:var(--primary)}
+    .post-thumb{border-radius:10px;overflow:hidden;background:#020617;min-height:136px}
+    .post-thumb img{width:100%;height:100%;object-fit:cover}
+    .post-empty{font-size:.85rem;color:#94a3b8;margin-top:.5rem;display:none}
+    .blog-sidebar{font-size:.86rem}
+    .sidebar-card{background:var(--card);border-radius:10px;border:1px solid var(--border);padding:.95rem;margin-bottom:.9rem;box-shadow:var(--shadow)}
+    .sidebar-card h3{font-size:.92rem;margin:0 0 .35rem}
+    .sidebar-card p{color:var(--text-light);font-size:.84rem}
+    .sidebar-list{list-style:none;margin:0;padding:0}
+    .sidebar-list li+li{margin-top:.3rem}
+    .sidebar-list a:hover{color:var(--primary)}
+    footer{padding:3rem 0 2rem;margin-top:3rem;border-top:1px solid var(--border);background:var(--card)}
+    .footer-content{max-width:1120px;margin:0 auto;padding:0 1.25rem;display:flex;flex-direction:column;gap:1.5rem;align-items:center}
+    .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+    .footer-links a{color:var(--text-light);font-weight:500;font-size:.9rem}
+    .footer-links a:hover{color:var(--primary)}
+    .compliance-badges{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+    .compliance-badge{background:var(--bg-elevated);border:1px solid var(--border);padding:.4rem .8rem;border-radius:6px;font-size:.8rem;font-weight:600;color:var(--text);display:inline-flex;align-items:center;gap:.4rem}
+    .footer-legal{font-size:.75rem;color:var(--text-light);max-width:800px;text-align:center;line-height:1.5}
+    @media (max-width:920px){.blog-layout{grid-template-columns:1fr}.post-card{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="blog-shell">
+    <div class="topbar">
+      <a href="/" class="brand" aria-label="Finguid home">
+        <span class="brand-mark">FG</span><span>Finguid</span>
+      </a>
+      <div class="top-actions" aria-label="Navigation and theme">
+        <a href="/" class="btn-nav">Home</a>
+        <a href="/mortgage-calculator" class="btn-nav">Mortgage calculator</a>
+        <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark/light mode">☀️</button>
+      </div>
+    </div>
+
+    <section class="blog-hero" aria-labelledby="blog-hero-heading">
+      <div class="blog-kicker">Finguid blog</div>
+      <h1 id="blog-hero-heading" class="blog-title">Money guides for Americans using real US numbers</h1>
+      <p class="blog-subtitle">Guides are written for US readers and tightly linked to Finguid calculators so every article has a clear, interactive next step.</p>
+      <div class="blog-meta-row">
+        <div class="blog-meta-pill">US-only focus</div>
+        <div class="blog-meta-pill">Calculator-linked walkthroughs</div>
+        <div class="blog-meta-pill">Guest & admin authors</div>
+      </div>
+    </section>
+
+    <section aria-label="Blog filters and posts">
+      <div class="blog-controls">
+        <div class="blog-search">
+          <input id="blog-search-input" type="search" placeholder="Search topics like first-time homebuyer..." aria-label="Search blog posts" autocomplete="off" />
+          <span class="blog-search-icon" aria-hidden="true">⌕</span>
+        </div>
+        <div class="topic-pills" id="topic-pills" role="tablist" aria-label="Filter by topic">
+          <button class="topic-pill active" data-topic="all" role="tab" aria-selected="true">All topics</button>
+          <button class="topic-pill" data-topic="mortgage" role="tab" aria-selected="false">Mortgages</button>
+          <button class="topic-pill" data-topic="auto-loans" role="tab" aria-selected="false">Auto loans</button>
+          <button class="topic-pill" data-topic="investing" role="tab" aria-selected="false">Investing</button>
+          <button class="topic-pill" data-topic="retirement" role="tab" aria-selected="false">Retirement</button>
+          <button class="topic-pill" data-topic="taxes" role="tab" aria-selected="false">Taxes</button>
+        </div>
+      </div>
+
+      <div class="blog-layout">
+        <div>
+          <div class="post-list" id="post-list" role="feed" aria-label="Blog post feed">
+            <!-- Dynamic cards will be inserted here from posts/posts.json -->
+          </div>
+          <div id="post-empty" class="post-empty" aria-live="polite">Loading posts...</div>
+        </div>
+
+        <aside class="blog-sidebar" aria-label="Popular topics and tools">
+          <div class="sidebar-card">
+            <h3>Popular guides</h3>
+            <ul class="sidebar-list" id="popular-guides">
+              <!-- Optional: can be filled manually or from JSON later -->
+              <li><a href="/blog/mortgage-first-time-homebuyer-checklist">First-time homebuyer checklist</a></li>
+              <li><a href="/blog/investing-how-to-use-401k-calculator">How to use the Finguid 401(k) calculator</a></li>
+              <li><a href="/blog/taxes-us-paycheck-tax-withholding">US paycheck tax withholding explained</a></li>
+            </ul>
+          </div>
+          <div class="sidebar-card">
+            <h3>Connected calculators</h3>
+            <ul class="sidebar-list">
+              <li><a href="/mortgage-calculator">Mortgage calculator</a></li>
+              <li><a href="/auto-loan-calculator">Auto loan calculator</a></li>
+              <li><a href="/tax-withholding-calculator">Tax withholding calculator</a></li>
+            </ul>
+          </div>
+          <div class="sidebar-card">
+            <h3>Editorial structure</h3>
+            <p>Each post can include a hero summary, calculator CTA, explainer sections, embedded video, FAQ, and related calculators.</p>
+          </div>
+        </aside>
+      </div>
+    </section>
+  </div>
+
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <nav class="footer-links" aria-label="Legal navigation">
+        <a href="/terms-of-service">Terms of Service</a>
+        <a href="/disclaimer">Disclaimer</a>
+        <a href="/affiliate-disclosure">Affiliate Disclosure</a>
+        <a href="/privacy-policy">Privacy Policy</a>
+      </nav>
+      <div class="compliance-badges" aria-label="Compliance and security">
+        <span class="compliance-badge">SSL Secured</span>
+        <span class="compliance-badge">GDPR Compliant</span>
+        <span class="compliance-badge">CCPA Compliant</span>
+        <span class="compliance-badge">FTC Compliant</span>
+        <span class="compliance-badge">WCAG 2.1 AA</span>
+      </div>
+      <div class="footer-legal">
+        <p><strong>Educational and informational only.</strong> These money guides and calculators do not replace personalized financial advice.</p>
+        <p><span id="year-blog"></span> Finguid. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Year
+    document.getElementById('year-blog').textContent = new Date().getFullYear();
+
+    // Theme toggle (default dark)
+    const themeToggle = document.getElementById('themeToggle');
+    let currentTheme = 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = '☀️';
+    themeToggle.addEventListener('click', () => {
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    });
+
+    // Blog JSON loading
+    const searchInput = document.getElementById('blog-search-input');
+    const topicPills = document.querySelectorAll('.topic-pill');
+    const postList = document.getElementById('post-list');
+    const emptyState = document.getElementById('post-empty');
+    let activeTopic = 'all';
+    let allPosts = [];
+
+    function normalize(text){return (text || '').toLowerCase();}
+
+    function renderPosts(){
+      postList.innerHTML = '';
+      const query = normalize(searchInput.value);
+      let visibleCount = 0;
+      allPosts.forEach(post => {
+        if (post.status && post.status !== 'published') return;
+        const topic = post.category || 'other';
+        const title = normalize(post.title);
+        const tags = normalize((post.tags || []).join(', '));
+        const matchesTopic = activeTopic === 'all' || topic === activeTopic;
+        const matchesQuery = !query || title.includes(query) || tags.includes(query);
+        if (!matchesTopic || !matchesQuery) return;
+        visibleCount++;
+        const card = document.createElement('article');
+        card.className = 'post-card';
+        card.setAttribute('data-topic', topic);
+        card.setAttribute('role','article');
+
+        const href = post.slug ? `/blog/${post.slug}` : '#';
+        const calcUrl = post.calculatorUrl || '#';
+        const categoryLabel = (post.categoryLabel || post.category || '').replace('-', ' ');
+        const calcLabel = post.calculatorLabel || 'Calculator linked to this article';
+        const readLabel = post.readLabel || 'Read article';
+        const runLabel = post.runLabel || 'Run calculator';
+        const timeToRead = post.readTime || '';
+        const metaParts = [];
+        if (post.updatedLabel) metaParts.push(post.updatedLabel);
+        if (timeToRead) metaParts.push(timeToRead);
+        if (post.authorType) metaParts.push(post.authorType === 'guest' ? 'Guest post' : 'Admin post');
+        const metaText = metaParts.join(' • ');
+
+        const bodyDiv = document.createElement('div');
+        bodyDiv.className = 'post-body';
+        bodyDiv.innerHTML = `
+          <div class="post-tag-row">
+            ${categoryLabel ? `<span class="post-tag">${categoryLabel}</span>` : ''}
+            ${post.secondaryTag ? `<span class="post-tag">${post.secondaryTag}</span>` : ''}
+          </div>
+          <h2 class="post-title"><a href="${href}">${post.title || ''}</a></h2>
+          ${metaText ? `<div class="post-meta">${metaText}</div>` : ''}
+          ${post.excerpt ? `<p class="post-excerpt">${post.excerpt}</p>` : ''}
+          ${calcUrl && calcUrl !== '#' ? `<div class="calc-link-box"><strong>${calcLabel}</strong><a href="${calcUrl}">${post.calculatorName || 'Open calculator'}</a></div>` : ''}
+          <div class="post-actions">
+            <a class="action-btn" href="${href}">${readLabel}</a>
+            ${calcUrl && calcUrl !== '#' ? `<a class="action-btn" href="${calcUrl}">${runLabel}</a>` : ''}
+          </div>
+        `;
+
+        const thumbDiv = document.createElement('div');
+        thumbDiv.className = 'post-thumb';
+        if (post.featuredImageUrl){
+          const img = document.createElement('img');
+          img.src = post.featuredImageUrl;
+          img.alt = post.featuredImageAlt || post.title || '';
+          img.loading = 'lazy';
+          thumbDiv.appendChild(img);
+        }
+
+        card.appendChild(bodyDiv);
+        card.appendChild(thumbDiv);
+        postList.appendChild(card);
+      });
+      if (visibleCount === 0){
+        emptyState.textContent = allPosts.length ? 'No posts match that search yet. Try a different keyword or topic.' : 'No posts have been published yet.';
+        emptyState.style.display = 'block';
+      } else {
+        emptyState.style.display = 'none';
+      }
+    }
+
+    topicPills.forEach(pill => pill.addEventListener('click', () => {
+      topicPills.forEach(p => {p.classList.remove('active');p.setAttribute('aria-selected','false');});
+      pill.classList.add('active');
+      pill.setAttribute('aria-selected','true');
+      activeTopic = pill.getAttribute('data-topic') || 'all';
+      renderPosts();
+    }));
+
+    searchInput.addEventListener('input', renderPosts);
+
+    fetch('/posts/posts.json')
+      .then(res => {
+        if (!res.ok) throw new Error('Failed to load posts.json');
+        return res.json();
+      })
+      .then(data => {
+        allPosts = Array.isArray(data.posts) ? data.posts : [];
+        if (!allPosts.length){
+          emptyState.textContent = 'No posts have been published yet.';
+          emptyState.style.display = 'block';
+        } else {
+          renderPosts();
+        }
+      })
+      .catch(() => {
+        emptyState.textContent = 'Unable to load blog data. Static example posts will be added later.';
+        emptyState.style.display = 'block';
+      });
+  </script>
+</body>
+</html>
