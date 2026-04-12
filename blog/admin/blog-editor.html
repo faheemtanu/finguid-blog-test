@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Finguid Blog Editor | Admin & Guest Publishing</title>
+  <meta name="description" content="Backend-ready blog editor for Finguid. Create admin and guest posts, attach calculators, and drag images into article content. Export JSON for GitHub + Netlify workflow." />
+  <style>
+    :root{--primary:#24acb9;--primary-dark:#19343b;--text:#e1e8ed;--text-light:#b8c5d0;--bg:#020617;--bg-elevated:#020617;--border:#1f2937;--card:#020617;--shadow:0 8px 24px rgba(0,0,0,.6);--radius:12px;--content:1200px}
+    [data-theme="light"]{--text:#1f2121;--text-light:#64748b;--bg:#ffffff;--bg-elevated:#ffffff;--card:#ffffff;--border:#e2e8f0;--shadow:0 4px 16px rgba(15,23,42,.1)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"Helvetica Neue",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;transition:background .25s ease,color .25s ease}
+    a{text-decoration:none;color:inherit}
+    .editor-shell{max-width:var(--content);margin:0 auto;padding:1.4rem 1.25rem 3rem}
+    .topbar{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap;margin-bottom:1.2rem}
+    .brand{display:flex;align-items:center;gap:.5rem;font-weight:700;color:var(--primary)}
+    .brand-mark{width:30px;height:30px;border-radius:999px;background:var(--primary);display:grid;place-items:center;color:#fff;font-size:.8rem;box-shadow:0 0 18px rgba(36,172,185,.6)}
+    .brand span:last-child{letter-spacing:.03em;font-size:18px}
+    .top-actions{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+    .btn-nav,.icon-btn{border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text-light);cursor:pointer;font-size:.86rem;font-weight:600;padding:.55rem .95rem;display:inline-flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s,background .2s,transform .1s}
+    .icon-btn{width:38px;height:38px;padding:0;font-size:.9rem}
+    .btn-nav:hover,.icon-btn:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-1px)}
+    .editor-header{margin-bottom:1rem}
+    .editor-kicker{text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;color:var(--text-light);margin-bottom:.25rem}
+    .editor-title{font-size:1.5rem;margin-bottom:.3rem}
+    .editor-subtitle{font-size:.9rem;color:var(--text-light);max-width:42rem}
+    .editor-layout{display:grid;grid-template-columns:minmax(0,2fr) minmax(0,1.4fr);gap:1rem;margin-top:1.4rem}
+    .panel{background:var(--card);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:1rem}
+    .panel h2{font-size:.96rem;margin-bottom:.5rem}
+    .panel h3{font-size:.9rem;margin-bottom:.35rem}
+    .field-group{margin-bottom:.75rem}
+    .field-label{display:block;font-size:.8rem;font-weight:600;margin-bottom:.25rem;color:var(--text-light)}
+    .field-input,.field-select{width:100%;padding:.75rem .85rem;border-radius:10px;border:1px solid var(--border);background:var(--bg-elevated);color:var(--text);font-size:.86rem;outline:none;transition:border-color .2s,box-shadow .2s}
+    .field-input:focus,.field-select:focus{border-color:var(--primary);box-shadow:0 0 0 1px rgba(36,172,185,.25)}
+    .field-row{display:grid;grid-template-columns:1.1fr 1.1fr;gap:.75rem}
+    .editor-body-label{display:flex;justify-content:space-between;align-items:center;font-size:.8rem;font-weight:600;color:var(--text-light);margin-bottom:.35rem}
+    .body-editor{border-radius:12px;border:1px solid var(--border);background:var(--bg-elevated);min-height:260px;padding:.85rem .9rem;font-size:.88rem;line-height:1.7;overflow-y:auto;outline:none;white-space:pre-wrap}
+    .body-editor:focus{border-color:var(--primary);box-shadow:0 0 0 1px rgba(36,172,185,.25)}
+    .body-editor img{max-width:100%;border-radius:10px;margin:.6rem 0;display:block}
+    .helper-text{font-size:.78rem;color:var(--text-light);margin-top:.3rem}
+    .image-panel{display:flex;flex-direction:column;gap:.75rem}
+    .drop-zone{border-radius:12px;border:1px dashed var(--border);background:var(--bg-elevated);padding:1.1rem .9rem;text-align:center;font-size:.84rem;color:var(--text-light);cursor:pointer;transition:border-color .2s,background .2s}
+    .drop-zone.dragover{border-color:var(--primary);background:rgba(36,172,185,.1)}
+    .drop-zone strong{color:var(--primary)}
+    .thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(90px,1fr));gap:.7rem;margin-top:.3rem}
+    .thumb{border-radius:10px;border:1px solid var(--border);background:var(--bg-elevated);padding:.2rem;cursor:grab;display:flex;flex-direction:column;gap:.2rem}
+    .thumb img{width:100%;height:70px;object-fit:cover;border-radius:8px;pointer-events:none}
+    .thumb span{font-size:.72rem;color:var(--text-light);text-align:center}
+    .json-panel{margin-top:1rem}
+    .json-output{margin-top:.4rem;font-family:Menlo,Consolas,monospace;font-size:.78rem;max-height:160px;overflow:auto;padding:.6rem .7rem;border-radius:10px;border:1px solid var(--border);background:var(--bg-elevated);color:var(--text-light);white-space:pre}
+    .json-actions{display:flex;gap:.5rem;margin-top:.4rem;flex-wrap:wrap}
+    .btn-primary{border-radius:999px;border:1px solid var(--primary);background:var(--primary);color:#fff;font-size:.86rem;font-weight:600;padding:.6rem 1.1rem;cursor:pointer;display:inline-flex;align-items:center;gap:.25rem;transition:background .2s,border-color .2s,transform .1s}
+    .btn-primary:hover{background:var(--primary-dark);border-color:var(--primary-dark);transform:translateY(-1px)}
+    .btn-secondary{border-radius:999px;border:1px solid var(--border);background:var(--bg-elevated);color:var(--text-light);font-size:.82rem;font-weight:600;padding:.5rem .9rem;cursor:pointer;display:inline-flex;align-items:center;gap:.25rem;transition:border-color .2s,color .2s,background .2s}
+    .btn-secondary:hover{border-color:var(--primary);color:var(--primary)}
+    @media (max-width:920px){.editor-layout{grid-template-columns:1fr}}
+  </style>
+</head>
+<body>
+  <div class="editor-shell">
+    <div class="topbar">
+      <a href="/" class="brand"><span class="brand-mark">FG</span><span>Finguid</span></a>
+      <div class="top-actions">
+        <a href="/blog" class="btn-nav">View blog</a>
+        <button id="editorThemeToggle" class="icon-btn" type="button" aria-label="Toggle dark/light mode">☀️</button>
+      </div>
+    </div>
+
+    <header class="editor-header">
+      <div class="editor-kicker">Blog backend • Admin & guest</div>
+      <h1 class="editor-title">Blog editor for GitHub + Netlify workflow</h1>
+      <p class="editor-subtitle">Use this panel to prepare admin and guest posts. Upload images, drag them into the article body, attach a dedicated calculator link, then export JSON and paste it into <code>posts/posts.json</code> in your GitHub repo.</p>
+    </header>
+
+    <section class="editor-layout" aria-label="Blog editor panels">
+      <div class="panel">
+        <h2>Post content</h2>
+        <div class="field-group">
+          <label class="field-label" for="postTitle">Title</label>
+          <input id="postTitle" class="field-input" type="text" placeholder="First-time homebuyer checklist for US borrowers" />
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="postSlug">Slug</label>
+            <input id="postSlug" class="field-input" type="text" placeholder="mortgage-first-time-homebuyer-checklist" />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="postCategory">Category</label>
+            <select id="postCategory" class="field-select">
+              <option value="mortgage">mortgage</option>
+              <option value="auto-loans">auto-loans</option>
+              <option value="investing">investing</option>
+              <option value="retirement">retirement</option>
+              <option value="taxes">taxes</option>
+              <option value="debt">debt</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="field-group">
+            <label class="field-label" for="postAuthorName">Author name</label>
+            <input id="postAuthorName" class="field-input" type="text" placeholder="Jane Doe" />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="postAuthorType">Author type</label>
+            <select id="postAuthorType" class="field-select">
+              <option value="admin">admin</option>
+              <option value="guest">guest</option>
+            </select>
+          </div>
+        </div>
+        <div class="field-group">
+          <label class="field-label" for="postExcerpt">Short excerpt</label>
+          <textarea id="postExcerpt" class="field-input" style="min-height:70px;resize:vertical;" placeholder="Short summary for cards, SEO, and hero intro."></textarea>
+        </div>
+        <div class="field-group">
+          <div class="editor-body-label">
+            <span>Article body</span>
+            <span style="font-size:.76rem;color:var(--text-light);">Tip: drag images from the right panel into this content.</span>
+          </div>
+          <div id="bodyEditor" class="body-editor" contenteditable="true">
+            <h2>Section heading</h2>
+            <p>Start writing or paste your formatted blog content here. You can drag images from the right panel into this area at any point to visually place them between paragraphs.</p>
+          </div>
+          <div class="helper-text">Body will be saved as <code>bodyHtml</code> inside the JSON object and used by your blog post template page.</div>
+        </div>
+      </div>
+
+      <aside class="panel image-panel">
+        <div>
+          <h2>Image library</h2>
+          <div id="dropZone" class="drop-zone">
+            <p><strong>Click or drag images here</strong> to add them to the library.</p>
+            <p style="font-size:.78rem;">Then drag any thumbnail into the article body on the left.</p>
+          </div>
+          <input id="imageInput" type="file" accept="image/*" multiple style="display:none;" />
+          <div id="thumbs" class="thumbs" aria-label="Uploaded images"></div>
+        </div>
+
+        <div class="meta-panel">
+          <h3>Calculator & SEO meta</h3>
+          <div class="field-group">
+            <label class="field-label" for="postCalculator">Dedicated calculator link</label>
+            <input id="postCalculator" class="field-input" type="url" placeholder="https://www.finguid.com/mortgage-calculator" />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="postCalculatorName">Calculator name shown</label>
+            <input id="postCalculatorName" class="field-input" type="text" placeholder="Mortgage Calculator" />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="postVideo">Embedded video URL (optional)</label>
+            <input id="postVideo" class="field-input" type="url" placeholder="https://www.youtube.com/embed/..." />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="postImage">Featured image URL (optional)</label>
+            <input id="postImage" class="field-input" type="url" placeholder="https://..." />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="seoTitle">SEO title (optional)</label>
+            <input id="seoTitle" class="field-input" type="text" placeholder="Finguid | First-time homebuyer checklist" />
+          </div>
+          <div class="field-group">
+            <label class="field-label" for="seoDescription">SEO description (optional)</label>
+            <textarea id="seoDescription" class="field-input" style="min-height:60px;resize:vertical;" placeholder="Meta description used in search results."></textarea>
+          </div>
+        </div>
+
+        <div class="json-panel">
+          <h3>Post JSON for <code>posts/posts.json</code></h3>
+          <div class="json-actions">
+            <button id="generateJson" class="btn-primary" type="button">Generate JSON</button>
+            <button id="copyJson" class="btn-secondary" type="button">Copy JSON</button>
+          </div>
+          <div id="jsonOutput" class="json-output" aria-label="Blog JSON preview"></div>
+          <div class="helper-text">
+            After generating JSON, copy this object and paste it into the <code>posts</code> array inside <code>posts/posts.json</code> in your GitHub repo, then commit and let Netlify deploy.
+          </div>
+        </div>
+      </aside>
+    </section>
+  </div>
+
+  <script>
+    // Theme toggle
+    const editorThemeToggle = document.getElementById('editorThemeToggle');
+    let editorTheme = 'dark';
+    document.documentElement.setAttribute('data-theme', editorTheme);
+    editorThemeToggle.textContent = '☀️';
+    editorThemeToggle.addEventListener('click', () => {
+      editorTheme = editorTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', editorTheme);
+      editorThemeToggle.textContent = editorTheme === 'dark' ? '☀️' : '🌙';
+    });
+
+    // Image upload + drag-and-drop
+    const dropZone = document.getElementById('dropZone');
+    const imageInput = document.getElementById('imageInput');
+    const thumbs = document.getElementById('thumbs');
+    const bodyEditor = document.getElementById('bodyEditor');
+
+    dropZone.addEventListener('click', () => imageInput.click());
+    dropZone.addEventListener('dragover', e => {e.preventDefault();dropZone.classList.add('dragover');});
+    dropZone.addEventListener('dragleave', () => dropZone.classList.remove('dragover'));
+    dropZone.addEventListener('drop', e => {
+      e.preventDefault();
+      dropZone.classList.remove('dragover');
+      if (e.dataTransfer.files && e.dataTransfer.files.length){handleFiles(e.dataTransfer.files);}
+    });
+    imageInput.addEventListener('change', e => {
+      if (e.target.files && e.target.files.length){handleFiles(e.target.files);imageInput.value='';}
+    });
+
+    function handleFiles(fileList){
+      Array.from(fileList).forEach(file => {
+        if (!file.type.startsWith('image/')) return;
+        const reader = new FileReader();
+        reader.onload = ev => {
+          const url = ev.target.result;
+          const thumb = document.createElement('div');
+          thumb.className = 'thumb';
+          thumb.draggable = true;
+          thumb.dataset.url = url;
+          const img = document.createElement('img');
+          img.src = url;img.alt = file.name;
+          const label = document.createElement('span');
+          label.textContent = file.name.length > 16 ? file.name.slice(0,13) + '…' : file.name;
+          thumb.appendChild(img);thumb.appendChild(label);thumbs.appendChild(thumb);
+          thumb.addEventListener('dragstart', ev2 => {ev2.dataTransfer.setData('text/plain', url);});
+        };
+        reader.readAsDataURL(file);
+      });
+    }
+
+    bodyEditor.addEventListener('dragover', e => e.preventDefault());
+    bodyEditor.addEventListener('drop', e => {
+      e.preventDefault();
+      const url = e.dataTransfer.getData('text/plain');
+      if (!url) return;
+      insertImageAtCursor(url);
+    });
+    function insertImageAtCursor(url){
+      const imgHTML = '<img src="' + url + '" alt="">';
+      bodyEditor.focus();
+      const sel = window.getSelection();
+      if (!sel || sel.rangeCount === 0){bodyEditor.insertAdjacentHTML('beforeend', imgHTML);return;}
+      const range = sel.getRangeAt(0);
+      range.deleteContents();
+      const temp = document.createElement('div');
+      temp.innerHTML = imgHTML;
+      const frag = document.createDocumentFragment();
+      let node;
+      while ((node = temp.firstChild)){frag.appendChild(node);} 
+      range.insertNode(frag);
+      range.collapse(false);
+      sel.removeAllRanges();
+      sel.addRange(range);
+    }
+
+    // JSON generation
+    const generateJsonBtn = document.getElementById('generateJson');
+    const copyJsonBtn = document.getElementById('copyJson');
+    const jsonOutput = document.getElementById('jsonOutput');
+
+    function buildPayload(){
+      return {
+        id: crypto.randomUUID ? crypto.randomUUID() : Date.now().toString(),
+        title: document.getElementById('postTitle').value.trim(),
+        slug: document.getElementById('postSlug').value.trim(),
+        category: document.getElementById('postCategory').value,
+        authorName: document.getElementById('postAuthorName').value.trim(),
+        authorType: document.getElementById('postAuthorType').value,
+        excerpt: document.getElementById('postExcerpt').value.trim(),
+        bodyHtml: bodyEditor.innerHTML.trim(),
+        calculatorUrl: document.getElementById('postCalculator').value.trim(),
+        calculatorName: document.getElementById('postCalculatorName').value.trim(),
+        featuredImageUrl: document.getElementById('postImage').value.trim(),
+        videoEmbedUrl: document.getElementById('postVideo').value.trim(),
+        seoTitle: document.getElementById('seoTitle').value.trim(),
+        seoDescription: document.getElementById('seoDescription').value.trim(),
+        status: 'published',
+        createdAt: new Date().toISOString()
+      };
+    }
+
+    generateJsonBtn.addEventListener('click', () => {
+      const payload = buildPayload();
+      jsonOutput.textContent = JSON.stringify(payload, null, 2);
+    });
+
+    copyJsonBtn.addEventListener('click', async () => {
+      if (!jsonOutput.textContent){
+        const payload = buildPayload();
+        jsonOutput.textContent = JSON.stringify(payload, null, 2);
+      }
+      try {
+        await navigator.clipboard.writeText(jsonOutput.textContent);
+        copyJsonBtn.textContent = 'Copied!';
+        setTimeout(() => {copyJsonBtn.textContent = 'Copy JSON';}, 1500);
+      } catch {
+        alert('Copy failed. Please select and copy the text manually.');
+      }
+    });
+  </script>
+</body>
+</html>
