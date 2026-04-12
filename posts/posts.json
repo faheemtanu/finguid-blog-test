@@ -1,1 +1,7 @@
-fetch('../posts/posts.json')
+{
+  "posts": [
+    {
+      ...paste generated JSON here...
+    }
+  ]
+}
