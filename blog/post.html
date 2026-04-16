@@ -6,7 +6,7 @@
   <title>Finguid Money Guides | Article</title>
   <meta name="description" content="US-focused money guides tightly linked to Finguid calculators. Learn mortgages, loans, investing, retirement and taxes using real American examples." />
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  //www.finguid.com/blog" />
+  <link rel="canonical" id="canonical-link" href="https://www.finguid.com/blog" />
 
   <style>
     :root{--primary:#24acb9;--primary-dark:#19343b;--accent:#ffc107;--text:#e1e8ed;--text-light:#b8c5d0;--bg:#0b1120;--bg-elevated:#020617;--card:#020617;--border:#1f2937;--radius:12px;--shadow:0 8px 24px rgba(0,0,0,.5);--content:900px}
@@ -173,8 +173,17 @@
           if (post.readTime) metaParts.push(post.readTime);
           metaEl.innerHTML = metaParts.map(p => `<span>${escapeHtml(p)}</span>`).join('');
 
-          // Body HTML from JSON (already proper HTML)
-          bodyEl.innerHTML = post.bodyHtml || '<p>No content available.</p>';
+          // Body HTML from JSON – decode &lt;h2&gt; etc. into real HTML
+          let html = post.bodyHtml || '<p>No content available.</p>';
+
+          // Strip optional <span ...> wrapper added by editor
+          html = html.replace(/^<span[^>]*>/, '').replace(/<\/span><br>\s*$/, '');
+
+          const textarea = document.createElement('textarea');
+          textarea.innerHTML = html;
+          html = textarea.value;
+
+          bodyEl.innerHTML = html;
 
           // Calculator callout
           if (post.calculatorUrl) {
@@ -187,7 +196,7 @@
             `;
           }
 
-          // SEO: set title and canonical if available
+          // SEO
           if (post.seoTitle) document.title = post.seoTitle;
           if (post.seoDescription) {
             const metaDesc = document.querySelector('meta[name="description"]');
