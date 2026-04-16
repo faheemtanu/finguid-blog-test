@@ -241,8 +241,7 @@
         card.setAttribute('data-topic', topic);
         card.setAttribute('role', 'article');
 
-        const href = post.slug ? `../blog/${post.slug}` : '#';
-        const calcUrl = post.calculatorUrl || '#';
+        const href = post.slug ? `../blog/post.html?slug=${encodeURIComponent(post.slug)}` : '#';        const calcUrl = post.calculatorUrl || '#';
         const categoryLabel = (post.categoryLabel || post.category || '').replace('-', ' ');
         const calcLabel = post.calculatorLabel || 'Calculator linked to this article';
         const readLabel = post.readLabel || 'Read article';
