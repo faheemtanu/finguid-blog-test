@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Finguid Money Guides | Article</title>
+  <meta name="description" content="US-focused money guides tightly linked to Finguid calculators. Learn mortgages, loans, investing, retirement and taxes using real American examples." />
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+  //www.finguid.com/blog" />
+
+  <style>
+    :root{--primary:#24acb9;--primary-dark:#19343b;--accent:#ffc107;--text:#e1e8ed;--text-light:#b8c5d0;--bg:#0b1120;--bg-elevated:#020617;--card:#020617;--border:#1f2937;--radius:12px;--shadow:0 8px 24px rgba(0,0,0,.5);--content:900px}
+    [data-theme="light"]{--text:#1f2121;--text-light:#64748b;--bg:#ffffff;--bg-elevated:#f5f7fa;--card:#ffffff;--border:#e2e8f0;--shadow:0 4px 14px rgba(15,23,42,.08)}
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:"Helvetica Neue",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;transition:background .25s ease,color .25s ease}
+    a{text-decoration:none;color:inherit}
+    img{max-width:100%;display:block}
+    .shell{max-width:var(--content);margin:0 auto;padding:1.4rem 1.25rem 3rem}
+    .topbar{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap;padding-bottom:1rem}
+    .brand{display:flex;align-items:center;gap:.5rem;font-weight:700;color:var(--primary)}
+    .brand-mark{width:30px;height:30px;border-radius:999px;background:var(--primary);display:grid;place-items:center;color:#fff;font-size:.8rem;box-shadow:0 0 18px rgba(36,172,185,.6)}
+    .brand span:last-child{letter-spacing:.03em;font-size:18px}
+    .top-actions{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
+    .btn-nav,.icon-btn{border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text-light);cursor:pointer;font-size:.86rem;font-weight:600;padding:.55rem .95rem;display:inline-flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s,background .2s,transform .1s}
+    .icon-btn{width:38px;height:38px;padding:0;font-size:.9rem}
+    .btn-nav:hover,.icon-btn:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-1px)}
+
+    .article-hero{padding:1.5rem 0 1rem;border-bottom:1px solid var(--border);margin-bottom:1.25rem}
+    .article-kicker{text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;color:var(--text-light);margin-bottom:.35rem}
+    .article-title{font-size:clamp(1.9rem,4vw,2.4rem);margin-bottom:.4rem}
+    .article-meta{font-size:.8rem;color:var(--text-light);display:flex;flex-wrap:wrap;gap:.45rem}
+    .article-meta span::after{content:"•";margin:0 .35rem;color:#4b5563}
+    .article-meta span:last-child::after{content:""}
+
+    .article-body{margin-top:1.35rem;background:var(--card);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:1.25rem 1.4rem}
+    .article-body h2{font-size:1.15rem;margin:1.2rem 0 .4rem}
+    .article-body p{margin:.45rem 0;font-size:.93rem;color:var(--text-light)}
+    .article-body ul{margin:.5rem 0 .5rem 1.3rem;font-size:.93rem;color:var(--text-light)}
+    .article-body li{margin:.28rem 0}
+    .article-body a{color:var(--primary);font-weight:600}
+    .article-body a:hover{text-decoration:underline}
+
+    .calc-callout{margin-top:1.1rem;padding:.9rem 1rem;border-radius:10px;background:rgba(36,172,185,.08);border:1px solid rgba(36,172,185,.25);font-size:.84rem}
+    [data-theme="light"] .calc-callout{background:rgba(36,172,185,.06)}
+    .calc-callout strong{display:block;margin-bottom:.25rem}
+    .calc-callout a{color:var(--primary);font-weight:600}
+
+    .back-link{display:inline-flex;align-items:center;gap:.35rem;font-size:.83rem;color:var(--text-light);margin-top:1.4rem}
+    .back-link:hover{color:var(--primary)}
+
+    .not-found{margin-top:2.5rem;font-size:.9rem;color:var(--text-light)}
+
+    footer{padding:3rem 0 2rem;margin-top:3rem;border-top:1px solid var(--border);background:var(--card)}
+    .footer-content{max-width:var(--content);margin:0 auto;padding:0 1.25rem;display:flex;flex-direction:column;gap:1.5rem;align-items:center}
+    .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}
+    .footer-links a{color:var(--text-light);font-weight:500;font-size:.9rem}
+    .footer-links a:hover{color:var(--primary)}
+    .footer-legal{font-size:.75rem;color:var(--text-light);max-width:800px;text-align:center;line-height:1.5}
+  </style>
+</head>
+<body>
+  <div class="shell">
+    <div class="topbar">
+      <a href="../" class="brand" aria-label="Finguid home">
+        <span class="brand-mark">FG</span><span>Finguid</span>
+      </a>
+      <div class="top-actions" aria-label="Navigation and theme">
+        <a href="../blog/" class="btn-nav">All guides</a>
+        <a href="../mortgage-calculator" class="btn-nav">Mortgage calculator</a>
+        <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark/light mode">☀️</button>
+      </div>
+    </div>
+
+    <section id="article-section" aria-labelledby="article-title">
+      <div class="article-hero">
+        <div class="article-kicker" id="article-category">Finguid guide</div>
+        <h1 id="article-title" class="article-title">Loading article...</h1>
+        <div class="article-meta" id="article-meta"></div>
+      </div>
+
+      <article id="article-body" class="article-body">
+        <p>Loading content...</p>
+      </article>
+
+      <div id="article-calc" class="calc-callout" style="display:none;"></div>
+
+      <a href="../blog/" class="back-link">← Back to all guides</a>
+
+      <div id="article-not-found" class="not-found" style="display:none;">
+        We could not find this article. It may be unpublished or the link may be incorrect.
+      </div>
+    </section>
+  </div>
+
+  <footer role="contentinfo">
+    <div class="footer-content">
+      <nav class="footer-links" aria-label="Legal navigation">
+        <a href="../terms-of-service">Terms of Service</a>
+        <a href="../disclaimer">Disclaimer</a>
+        <a href="../affiliate-disclosure">Affiliate Disclosure</a>
+        <a href="../privacy-policy">Privacy Policy</a>
+      </nav>
+      <div class="footer-legal">
+        <p><strong>Educational and informational only.</strong> These money guides and calculators do not replace personalized financial advice.</p>
+        <p><span id="year-article"></span> Finguid. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById('year-article').textContent = new Date().getFullYear();
+
+    const themeToggle = document.getElementById('themeToggle');
+    let currentTheme = 'dark';
+    document.documentElement.setAttribute('data-theme', currentTheme);
+    themeToggle.textContent = '☀️';
+    themeToggle.addEventListener('click', () => {
+      currentTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      document.documentElement.setAttribute('data-theme', currentTheme);
+      themeToggle.textContent = currentTheme === 'dark' ? '☀️' : '🌙';
+    });
+
+    function getSlugFromQuery() {
+      const params = new URLSearchParams(window.location.search);
+      return params.get('slug') || '';
+    }
+
+    function escapeHtml(text) {
+      return String(text || '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    const slug = getSlugFromQuery();
+    const titleEl = document.getElementById('article-title');
+    const categoryEl = document.getElementById('article-category');
+    const metaEl = document.getElementById('article-meta');
+    const bodyEl = document.getElementById('article-body');
+    const calcEl = document.getElementById('article-calc');
+    const notFoundEl = document.getElementById('article-not-found');
+    const canonicalLink = document.getElementById('canonical-link');
+
+    if (!slug) {
+      titleEl.textContent = 'Article not found';
+      bodyEl.innerHTML = '<p>Missing slug in URL. Please go back to the blog listing and try again.</p>';
+      notFoundEl.style.display = 'block';
+    } else {
+      fetch('../posts/posts.json')
+        .then(res => {
+          if (!res.ok) throw new Error('Failed to load posts.json');
+          return res.json();
+        })
+        .then(data => {
+          const posts = Array.isArray(data.posts) ? data.posts : [];
+          const post = posts.find(p => p.slug === slug);
+
+          if (!post) {
+            titleEl.textContent = 'Article not found';
+            bodyEl.innerHTML = '<p>This article could not be found or is not published yet.</p>';
+            notFoundEl.style.display = 'block';
+            return;
+          }
+
+          // Title, category, meta
+          titleEl.textContent = post.title || 'Finguid guide';
+          categoryEl.textContent = (post.category || 'Finguid guide').replace('-', ' ');
+          const metaParts = [];
+          if (post.authorName) metaParts.push(post.authorName);
+          if (post.authorType) metaParts.push(post.authorType === 'guest' ? 'Guest post' : 'Admin post');
+          if (post.readTime) metaParts.push(post.readTime);
+          metaEl.innerHTML = metaParts.map(p => `<span>${escapeHtml(p)}</span>`).join('');
+
+          // Body HTML from JSON (already proper HTML)
+          bodyEl.innerHTML = post.bodyHtml || '<p>No content available.</p>';
+
+          // Calculator callout
+          if (post.calculatorUrl) {
+            calcEl.style.display = 'block';
+            calcEl.innerHTML = `
+              <strong>Calculator linked to this article</strong>
+              <a href="${post.calculatorUrl}" target="_blank" rel="noopener noreferrer">
+                ${escapeHtml(post.calculatorName || 'Open calculator')}
+              </a>
+            `;
+          }
+
+          // SEO: set title and canonical if available
+          if (post.seoTitle) document.title = post.seoTitle;
+          if (post.seoDescription) {
+            const metaDesc = document.querySelector('meta[name="description"]');
+            if (metaDesc) metaDesc.setAttribute('content', post.seoDescription);
+          }
+          if (canonicalLink && post.slug) {
+            canonicalLink.href = `https://www.finguid.com/blog/${post.slug}`;
+          }
+        })
+        .catch(err => {
+          console.error('Article load error:', err);
+          titleEl.textContent = 'Article not available';
+          bodyEl.innerHTML = '<p>We were unable to load this article. Please try again later.</p>';
+          notFoundEl.style.display = 'block';
+        });
+    }
+  </script>
+</body>
+</html>
