@@ -9,6 +9,58 @@
   <link rel="canonical" id="canonical-link" href="https://www.finguid.com/blog" />
 
   <style>
+<style>
+  /* Ad and sponsorship blocks inside blog articles */
+
+  .blog-ad-banner,
+  .blog-sponsor-panel {
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin-block: 24px;
+    background: rgba(1, 105, 111, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .blog-ad-banner h3,
+  .blog-sponsor-panel h3 {
+    font-size: 0.9rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin: 0 0 6px;
+    opacity: 0.8;
+  }
+
+  .blog-ad-banner p,
+  .blog-sponsor-panel p {
+    margin: 0;
+    font-size: 0.95rem;
+    line-height: 1.6;
+  }
+
+  .blog-ad-cta {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 10px;
+    padding: 6px 14px;
+    border-radius: 999px;
+    font-size: 0.9rem;
+    background: #01696f;
+    color: #ffffff;
+    text-decoration: none;
+    border: 1px solid transparent;
+    transition:
+      background 150ms ease,
+      border-color 150ms ease,
+      transform 150ms ease;
+  }
+
+  .blog-ad-cta:hover {
+    background: #0c4e54;
+    border-color: rgba(255, 255, 255, 0.2);
+    transform: translateY(-1px);
+  }
+</style>
     :root{--primary:#24acb9;--primary-dark:#19343b;--accent:#ffc107;--text:#e1e8ed;--text-light:#b8c5d0;--bg:#0b1120;--bg-elevated:#020617;--card:#020617;--border:#1f2937;--radius:12px;--shadow:0 8px 24px rgba(0,0,0,.5);--content:900px}
     [data-theme="light"]{--text:#1f2121;--text-light:#64748b;--bg:#ffffff;--bg-elevated:#f5f7fa;--card:#ffffff;--border:#e2e8f0;--shadow:0 4px 14px rgba(15,23,42,.08)}
     *{box-sizing:border-box;margin:0;padding:0}
