@@ -1,5 +1,5 @@
 <script>
-  // Theme toggle
+  // Theme toggle (same as before)
   const themeToggle = document.getElementById("themeToggle");
   const savedTheme = localStorage.getItem("theme");
   if (savedTheme === "light") {
@@ -17,13 +17,13 @@
     }
   });
 
-  // Helper: read slug from URL
+  // Get slug from URL
   function getSlugFromUrl() {
     const params = new URLSearchParams(window.location.search);
     return params.get("slug");
   }
 
-  // Helper: format ISO date to nice text
+  // Format ISO date nicely
   function formatDate(dateString) {
     if (!dateString) return "";
     const date = new Date(dateString);
@@ -51,11 +51,11 @@
     }
 
     try {
-      // Fetch posts list
-      const res = await fetch("/finguid-blog-test/posts/posts.json");
+      // Use relative path so it works on GitHub Pages
+      const res = await fetch("../posts/posts.json");
       const data = await res.json();
       const posts = data.posts || [];
-      const post = posts.find((p) => p.slug === slug);
+      const post = posts.find(p => p.slug === slug);
 
       if (!post) {
         articleContainer.style.display = "none";
@@ -64,7 +64,7 @@
         return;
       }
 
-      // Basic meta
+      // Set title and meta
       document.title = post.seoTitle || post.title || "Finguid Blog";
       articleTitle.textContent = post.title || "Untitled article";
       articleCategory.textContent = (post.category || "Article").toUpperCase();
@@ -75,23 +75,20 @@
         <span>${post.calculatorName || "Calculator Guide"}</span>
       `;
 
-      // Build image + bodyHtml
+      // Build featured image HTML from featuredImageUrl
       const featuredImageUrl = post.featuredImageUrl || "";
-      const featuredImageAlt =
-        post.title ? `${post.title} - Finguid` : "Article image";
+      const featuredImageAlt = post.title ? `${post.title} - Finguid` : "Article image";
 
       const featuredImageHtml = featuredImageUrl
         ? `<img src="${featuredImageUrl}" alt="${featuredImageAlt}" loading="lazy">`
         : "";
 
-      // Remove first <img> from bodyHtml so it does not duplicate
+      // For now bodyHtml is simple test paragraph
       const rawBodyHtml = post.bodyHtml || "";
-      const cleanBodyHtml = rawBodyHtml.replace(/<img[^>]*>/i, "");
-
       articleBody.innerHTML =
-        (featuredImageHtml + cleanBodyHtml) || "<p>No content available.</p>";
+        (featuredImageHtml + rawBodyHtml) || "<p>No content available.</p>";
 
-      // Optional calculator callout at the bottom
+      // Optional calculator callout
       if (post.calculatorUrl && post.calculatorName) {
         const callout = document.createElement("div");
         callout.className = "calc-callout";
