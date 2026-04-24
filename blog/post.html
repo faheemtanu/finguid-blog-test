@@ -1,386 +1,517 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Finguid Money Guides | Article</title>
-  <meta name="description" content="US-focused money guides tightly linked to Finguid calculators. Learn mortgages, loans, investing, retirement and taxes using real American examples." />
-  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
-  <link rel="canonical" id="canonical-link" href="https://www.finguid.com/blog" />
-
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Finguid Blog</title>
+  <meta name="description" content="Finguid blog article" />
   <style>
-<style>
-  /* Ad and sponsorship blocks inside blog articles */
+    :root {
+      --primary: #24acb9;
+      --primary-dark: #19343b;
+      --accent: #ffc107;
+      --text: #e1e8ed;
+      --text-light: #b8c5d0;
+      --bg: #0b1120;
+      --bg-elevated: #020617;
+      --card: #020617;
+      --border: #1f2937;
+      --radius: 12px;
+      --shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+      --content: 900px;
+    }
 
-  .blog-ad-banner,
-  .blog-sponsor-panel {
-    border-radius: 12px;
-    padding: 16px 20px;
-    margin-block: 24px;
-    background: rgba(1, 105, 111, 0.12);
-    border: 1px solid rgba(255, 255, 255, 0.08);
-  }
+    [data-theme="light"] {
+      --text: #1f2121;
+      --text-light: #64748b;
+      --bg: #ffffff;
+      --bg-elevated: #f5f7fa;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --shadow: 0 4px 14px rgba(15, 23, 42, 0.08);
+    }
 
-  .blog-ad-banner h3,
-  .blog-sponsor-panel h3 {
-    font-size: 0.9rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    margin: 0 0 6px;
-    opacity: 0.8;
-  }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-  .blog-ad-banner p,
-  .blog-sponsor-panel p {
-    margin: 0;
-    font-size: 0.95rem;
-    line-height: 1.6;
-  }
+    body {
+      font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+      line-height: 1.6;
+      transition: background 0.25s ease, color 0.25s ease;
+    }
 
-  .blog-ad-cta {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 10px;
-    padding: 6px 14px;
-    border-radius: 999px;
-    font-size: 0.9rem;
-    background: #01696f;
-    color: #ffffff;
-    text-decoration: none;
-    border: 1px solid transparent;
-    transition:
-      background 150ms ease,
-      border-color 150ms ease,
-      transform 150ms ease;
-  }
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
 
-  .blog-ad-cta:hover {
-    background: #0c4e54;
-    border-color: rgba(255, 255, 255, 0.2);
-    transform: translateY(-1px);
-  }
-</style>
-    :root{--primary:#24acb9;--primary-dark:#19343b;--accent:#ffc107;--text:#e1e8ed;--text-light:#b8c5d0;--bg:#0b1120;--bg-elevated:#020617;--card:#020617;--border:#1f2937;--radius:12px;--shadow:0 8px 24px rgba(0,0,0,.5);--content:900px}
-    [data-theme="light"]{--text:#1f2121;--text-light:#64748b;--bg:#ffffff;--bg-elevated:#f5f7fa;--card:#ffffff;--border:#e2e8f0;--shadow:0 4px 14px rgba(15,23,42,.08)}
-    *{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:"Helvetica Neue",-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;background:var(--bg);color:var(--text);-webkit-font-smoothing:antialiased;line-height:1.6;transition:background .25s ease,color .25s ease}
-    a{text-decoration:none;color:inherit}
-    img{max-width:100%;display:block}
-    .shell{max-width:var(--content);margin:0 auto;padding:1.4rem 1.25rem 3rem}
-    .topbar{display:flex;justify-content:space-between;gap:1rem;align-items:center;flex-wrap:wrap;padding-bottom:1rem}
-    .brand{display:flex;align-items:center;gap:.5rem;font-weight:700;color:var(--primary)}
-    .brand-mark{width:30px;height:30px;border-radius:999px;background:var(--primary);display:grid;place-items:center;color:#fff;font-size:.8rem;box-shadow:0 0 18px rgba(36,172,185,.6)}
-    .brand span:last-child{letter-spacing:.03em;font-size:18px}
-    .top-actions{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center}
-    .btn-nav,.icon-btn{border-radius:999px;border:1px solid var(--border);background:var(--card);color:var(--text-light);cursor:pointer;font-size:.86rem;font-weight:600;padding:.55rem .95rem;display:inline-flex;align-items:center;justify-content:center;transition:border-color .2s,color .2s,background .2s,transform .1s}
-    .icon-btn{width:38px;height:38px;padding:0;font-size:.9rem}
-    .btn-nav:hover,.icon-btn:hover{border-color:var(--primary);color:var(--primary);transform:translateY(-1px)}
+    img {
+      max-width: 100%;
+      display: block;
+      border-radius: 12px;
+    }
 
-    .article-hero{padding:1.5rem 0 1rem;border-bottom:1px solid var(--border);margin-bottom:1.25rem}
-    .article-kicker{text-transform:uppercase;letter-spacing:.12em;font-size:.78rem;color:var(--text-light);margin-bottom:.35rem}
-    .article-title{font-size:clamp(1.9rem,4vw,2.4rem);margin-bottom:.4rem}
-    .article-meta{font-size:.8rem;color:var(--text-light);display:flex;flex-wrap:wrap;gap:.45rem}
-    .article-meta span::after{content:"•";margin:0 .35rem;color:#4b5563}
-    .article-meta span:last-child::after{content:""}
+    .shell {
+      max-width: var(--content);
+      margin: 0 auto;
+      padding: 1.4rem 1.25rem 3rem;
+    }
 
-    .article-body{margin-top:1.35rem;background:var(--card);border-radius:var(--radius);border:1px solid var(--border);box-shadow:var(--shadow);padding:1.25rem 1.4rem}
-    .article-body h2{font-size:1.15rem;margin:1.2rem 0 .4rem}
-    .article-body p{margin:.45rem 0;font-size:.93rem;color:var(--text-light)}
-    .article-body ul{margin:.5rem 0 .5rem 1.3rem;font-size:.93rem;color:var(--text-light)}
-    .article-body li{margin:.28rem 0}
-    .article-body a{color:var(--primary);font-weight:600}
-    .article-body a:hover{text-decoration:underline}
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      align-items: center;
+      flex-wrap: wrap;
+      padding-bottom: 1rem;
+    }
 
-    .calc-callout{margin-top:1.1rem;padding:.9rem 1rem;border-radius:10px;background:rgba(36,172,185,.08);border:1px solid rgba(36,172,185,.25);font-size:.84rem}
-    [data-theme="light"] .calc-callout{background:rgba(36,172,185,.06)}
-    .calc-callout strong{display:block;margin-bottom:.25rem}
-    .calc-callout a{color:var(--primary);font-weight:600}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
 
-    .back-link{display:inline-flex;align-items:center;gap:.35rem;font-size:.83rem;color:var(--text-light);margin-top:1.4rem}
-    .back-link:hover{color:var(--primary)}
+    .brand-mark {
+      width: 30px;
+      height: 30px;
+      border-radius: 999px;
+      background: var(--primary);
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-size: 0.8rem;
+      box-shadow: 0 0 18px rgba(36, 172, 185, 0.6);
+    }
 
-    .not-found{margin-top:2.5rem;font-size:.9rem;color:var(--text-light)}
+    .brand span:last-child {
+      letter-spacing: 0.03em;
+      font-size: 18px;
+    }
 
-    footer{padding:3rem 0 2rem;margin-top:3rem;border-top:1px solid var(--border);background:var(--card)}
-    .footer-content{max-width:var(--content);margin:0 auto;padding:0 1.25rem;display:flex;flex-direction:column;gap:1.5rem;align-items:center}
-    .footer-links{display:flex;gap:1.5rem;flex-wrap:wrap;justify-content:center}
-    .footer-links a{color:var(--text-light);font-weight:500;font-size:.9rem}
-    .footer-links a:hover{color:var(--primary)}
-    .footer-legal{font-size:.75rem;color:var(--text-light);max-width:800px;text-align:center;line-height:1.5}
+    .top-actions {
+      display: flex;
+      gap: 0.5rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .btn-nav,
+    .icon-btn {
+      border-radius: 999px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--text-light);
+      cursor: pointer;
+      font-size: 0.86rem;
+      font-weight: 600;
+      padding: 0.55rem 0.95rem;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: border-color 0.2s, color 0.2s, background 0.2s, transform 0.1s;
+    }
+
+    .icon-btn {
+      width: 38px;
+      height: 38px;
+      padding: 0;
+      font-size: 0.9rem;
+    }
+
+    .btn-nav:hover,
+    .icon-btn:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-1px);
+    }
+
+    .article-hero {
+      padding: 1.5rem 0 1rem;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 1.25rem;
+    }
+
+    .article-kicker {
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      font-size: 0.78rem;
+      color: var(--text-light);
+      margin-bottom: 0.35rem;
+    }
+
+    .article-title {
+      font-size: clamp(1.9rem, 4vw, 2.4rem);
+      margin-bottom: 0.4rem;
+    }
+
+    .article-meta {
+      font-size: 0.8rem;
+      color: var(--text-light);
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+    }
+
+    .article-meta span::after {
+      content: "•";
+      margin: 0 0.35rem;
+      color: #4b5563;
+    }
+
+    .article-meta span:last-child::after {
+      content: "";
+    }
+
+    .article-body {
+      margin-top: 1.35rem;
+      background: var(--card);
+      border-radius: var(--radius);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
+      padding: 1.25rem 1.4rem;
+    }
+
+    .article-body h2 {
+      font-size: 1.15rem;
+      margin: 1.2rem 0 0.4rem;
+      color: var(--text);
+    }
+
+    .article-body p {
+      margin: 0.45rem 0;
+      font-size: 0.93rem;
+      color: var(--text-light);
+    }
+
+    .article-body ul {
+      margin: 0.5rem 0 0.5rem 1.3rem;
+      font-size: 0.93rem;
+      color: var(--text-light);
+    }
+
+    .article-body li {
+      margin: 0.28rem 0;
+    }
+
+    .article-body a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .article-body a:hover {
+      text-decoration: underline;
+    }
+
+    .article-body img {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+
+    .calc-callout {
+      margin-top: 1.1rem;
+      padding: 0.9rem 1rem;
+      border-radius: 10px;
+      background: rgba(36, 172, 185, 0.08);
+      border: 1px solid rgba(36, 172, 185, 0.25);
+      font-size: 0.84rem;
+    }
+
+    [data-theme="light"] .calc-callout {
+      background: rgba(36, 172, 185, 0.06);
+    }
+
+    .calc-callout strong {
+      display: block;
+      margin-bottom: 0.25rem;
+    }
+
+    .calc-callout a {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .blog-ad-banner,
+    .blog-sponsor-panel {
+      border-radius: 12px;
+      padding: 16px 20px;
+      margin-block: 24px;
+      background: rgba(36, 172, 185, 0.08);
+      border: 1px solid rgba(36, 172, 185, 0.22);
+    }
+
+    [data-theme="light"] .blog-ad-banner,
+    [data-theme="light"] .blog-sponsor-panel {
+      background: rgba(36, 172, 185, 0.06);
+      border: 1px solid rgba(36, 172, 185, 0.18);
+    }
+
+    .blog-ad-banner h3,
+    .blog-sponsor-panel h3 {
+      font-size: 0.78rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin: 0 0 8px;
+      color: var(--primary);
+    }
+
+    .blog-ad-banner p,
+    .blog-sponsor-panel p {
+      margin: 0;
+      font-size: 0.93rem;
+      color: var(--text-light);
+    }
+
+    .blog-ad-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: 12px;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      background: var(--primary);
+      color: #ffffff !important;
+      text-decoration: none;
+      border: 1px solid transparent;
+      transition: background 150ms ease, border-color 150ms ease, transform 150ms ease;
+    }
+
+    .blog-ad-cta:hover {
+      background: #1b98a4;
+      border-color: rgba(255, 255, 255, 0.12);
+      transform: translateY(-1px);
+      text-decoration: none !important;
+    }
+
+    .back-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      font-size: 0.83rem;
+      color: var(--text-light);
+      margin-top: 1.4rem;
+    }
+
+    .back-link:hover {
+      color: var(--primary);
+    }
+
+    .not-found {
+      margin-top: 2.5rem;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+
+    footer {
+      padding: 3rem 0 2rem;
+      margin-top: 3rem;
+      border-top: 1px solid var(--border);
+      background: var(--card);
+    }
+
+    .footer-content {
+      max-width: var(--content);
+      margin: 0 auto;
+      padding: 0 1.25rem;
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .footer-links a {
+      color: var(--text-light);
+      font-weight: 500;
+      font-size: 0.9rem;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .footer-legal {
+      font-size: 0.75rem;
+      color: var(--text-light);
+      max-width: 800px;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 640px) {
+      .shell {
+        padding: 1rem 0.9rem 2rem;
+      }
+
+      .article-body {
+        padding: 1rem;
+      }
+
+      .article-title {
+        font-size: 1.7rem;
+      }
+    }
   </style>
 </head>
 <body>
-  <div class="shell">
+  <main class="shell">
     <div class="topbar">
-      <a href="../" class="brand" aria-label="Finguid home">
-        <span class="brand-mark">FG</span><span>Finguid</span>
+      <a class="brand" href="./index.html">
+        <span class="brand-mark">F</span>
+        <span>Finguid</span>
       </a>
-      <div class="top-actions" aria-label="Navigation and theme">
-        <a href="../blog/" class="btn-nav">All guides</a>
-        <a href="../mortgage-calculator" class="btn-nav">Mortgage calculator</a>
-        <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle dark/light mode">☀️</button>
+
+      <div class="top-actions">
+        <a class="btn-nav" href="./index.html">All articles</a>
+        <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">◐</button>
       </div>
     </div>
 
-    <section id="article-section" aria-labelledby="article-title">
+    <section id="articleContainer">
       <div class="article-hero">
-        <div class="article-kicker" id="article-category">Finguid guide</div>
-        <h1 id="article-title" class="article-title">Loading article...</h1>
-        <div class="article-meta" id="article-meta"></div>
+        <div class="article-kicker" id="articleCategory">Loading...</div>
+        <h1 class="article-title" id="articleTitle">Loading article...</h1>
+        <div class="article-meta" id="articleMeta"></div>
       </div>
 
-      <article id="article-body" class="article-body">
-        <p>Loading content...</p>
+      <article class="article-body" id="articleBody">
+        Loading content...
       </article>
 
-      <div id="article-calc" class="calc-callout" style="display:none;"></div>
-
-      <a href="../blog/" class="back-link">← Back to all guides</a>
-
-      <div id="article-not-found" class="not-found" style="display:none;">
-        We could not find this article. It may be unpublished or the link may be incorrect.
-      </div>
+      <a class="back-link" href="./index.html">← Back to all articles</a>
     </section>
-  </div>
 
-  <footer role="contentinfo">
+    <div id="notFound" class="not-found" style="display:none;">
+      Sorry, this article could not be found.
+    </div>
+  </main>
+
+  <footer>
     <div class="footer-content">
-      <nav class="footer-links" aria-label="Legal navigation">
-        <a href="../terms-of-service">Terms of Service</a>
-        <a href="../disclaimer">Disclaimer</a>
-        <a href="../affiliate-disclosure">Affiliate Disclosure</a>
-        <a href="../privacy-policy">Privacy Policy</a>
-      </nav>
-      <div class="footer-legal">
-        <p><strong>Educational and informational only.</strong> These money guides and calculators do not replace personalized financial advice.</p>
-        <p><span id="year-article"></span> Finguid. All rights reserved.</p>
+      <div class="footer-links">
+        <a href="https://www.finguid.com/" target="_blank" rel="noopener noreferrer">Home</a>
+        <a href="https://www.finguid.com/mortgage-calculator" target="_blank" rel="noopener noreferrer">Mortgage Calculator</a>
+        <a href="./index.html">Blog</a>
       </div>
+      <p class="footer-legal">
+        Educational content only. Finguid does not provide legal, tax, or financial advice. Always verify figures and consult qualified professionals before making major financial decisions.
+      </p>
     </div>
   </footer>
 
   <script>
-    const themeToggle = document.getElementById('themeToggle');
-    const ttsToggle = document.getElementById('ttsToggle');
-    const voiceToggle = document.getElementById('voiceToggle');
+    const themeToggle = document.getElementById("themeToggle");
+    const savedTheme = localStorage.getItem("theme");
 
-    const savedTheme = localStorage.getItem('theme');
+    if (savedTheme === "light") {
+      document.documentElement.setAttribute("data-theme", "light");
+    }
 
-    function applyTheme(theme) {
-      if (theme === 'light') {
-        document.documentElement.setAttribute('data-theme', 'light');
-        if (themeToggle) themeToggle.textContent = '☀️';
+    themeToggle.addEventListener("click", () => {
+      const isLight = document.documentElement.getAttribute("data-theme") === "light";
+      if (isLight) {
+        document.documentElement.removeAttribute("data-theme");
+        localStorage.setItem("theme", "dark");
       } else {
-        document.documentElement.removeAttribute('data-theme');
-        if (themeToggle) themeToggle.textContent = '🌙';
+        document.documentElement.setAttribute("data-theme", "light");
+        localStorage.setItem("theme", "light");
       }
-    }
-
-    applyTheme(savedTheme === 'light' ? 'light' : 'dark');
-
-    if (themeToggle) {
-      themeToggle.addEventListener('click', () => {
-        const current = document.documentElement.getAttribute('data-theme') === 'light' ? 'light' : 'dark';
-        const next = current === 'light' ? 'dark' : 'light';
-        applyTheme(next);
-        localStorage.setItem('theme', next);
-      });
-    }
+    });
 
     function getSlugFromUrl() {
       const params = new URLSearchParams(window.location.search);
-      return params.get('slug');
+      return params.get("slug");
     }
 
     function formatDate(dateString) {
-      if (!dateString) return '';
+      if (!dateString) return "";
       const date = new Date(dateString);
-      return date.toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric'
+      return date.toLocaleDateString("en-US", {
+        year: "numeric",
+        month: "long",
+        day: "numeric"
       });
-    }
-
-    function getArticleSpeechText() {
-      const title = document.getElementById('articleTitle')?.innerText || '';
-      const meta = document.getElementById('articleMeta')?.innerText || '';
-      const body = document.getElementById('articleBody')?.innerText || '';
-      return `${title}. ${meta}. ${body}`.replace(/\s+/g, ' ').trim();
-    }
-
-    let isSpeaking = false;
-
-    function stopSpeech() {
-      if (!('speechSynthesis' in window)) return;
-      window.speechSynthesis.cancel();
-      isSpeaking = false;
-      if (ttsToggle) ttsToggle.classList.remove('active');
-    }
-
-    if (ttsToggle) {
-      ttsToggle.addEventListener('click', () => {
-        if (!('speechSynthesis' in window)) {
-          alert('Text-to-speech is not supported in this browser.');
-          return;
-        }
-
-        if (isSpeaking) {
-          stopSpeech();
-          return;
-        }
-
-        const text = getArticleSpeechText();
-        if (!text) return;
-
-        window.speechSynthesis.cancel();
-        const utterance = new SpeechSynthesisUtterance(text);
-        utterance.rate = 1;
-        utterance.pitch = 1;
-        utterance.onend = () => {
-          isSpeaking = false;
-          ttsToggle.classList.remove('active');
-        };
-
-        isSpeaking = true;
-        ttsToggle.classList.add('active');
-        window.speechSynthesis.speak(utterance);
-      });
-    }
-
-    if (voiceToggle) {
-      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
-
-      if (!SpeechRecognition) {
-        voiceToggle.addEventListener('click', () => {
-          alert('Voice commands are not supported in this browser. Try Chrome or Edge.');
-        });
-      } else {
-        const recognition = new SpeechRecognition();
-        recognition.lang = 'en-US';
-        recognition.interimResults = false;
-        recognition.maxAlternatives = 1;
-        let listening = false;
-
-        function normalize(text) {
-          return text.toLowerCase().trim();
-        }
-
-        function handleVoiceCommand(text) {
-          const t = normalize(text);
-
-          if (t.includes('read article') || t.includes('read this article') || t.includes('start reading')) {
-            ttsToggle?.click();
-            return;
-          }
-
-          if (t.includes('stop reading') || t.includes('pause reading') || t === 'stop') {
-            stopSpeech();
-            return;
-          }
-
-          if (t.includes('go to blog') || t.includes('all articles')) {
-            window.location.href = './index.html';
-            return;
-          }
-
-          if (t.includes('mortgage calculator')) {
-            window.open('https://www.finguid.com/mortgage-calculator', '_blank', 'noopener,noreferrer');
-            return;
-          }
-
-          if (t.includes('investment calculator')) {
-            window.open('https://www.finguid.com/investment-calculator', '_blank', 'noopener,noreferrer');
-            return;
-          }
-
-          alert('Command not recognized. Try: read article, stop reading, go to blog, open mortgage calculator, or open investment calculator.');
-        }
-
-        recognition.addEventListener('result', (event) => {
-          const transcript = event.results[0][0].transcript;
-          handleVoiceCommand(transcript);
-        });
-
-        recognition.addEventListener('end', () => {
-          listening = false;
-          voiceToggle.classList.remove('active');
-        });
-
-        voiceToggle.addEventListener('click', () => {
-          if (listening) {
-            recognition.stop();
-            listening = false;
-            voiceToggle.classList.remove('active');
-            return;
-          }
-
-          try {
-            recognition.start();
-            listening = true;
-            voiceToggle.classList.add('active');
-          } catch (e) {
-            console.error(e);
-            listening = false;
-            voiceToggle.classList.remove('active');
-          }
-        });
-      }
     }
 
     async function loadPost() {
       const slug = getSlugFromUrl();
-      const articleTitle = document.getElementById('articleTitle');
-      const articleCategory = document.getElementById('articleCategory');
-      const articleMeta = document.getElementById('articleMeta');
-      const articleBody = document.getElementById('articleBody');
-      const articleContainer = document.getElementById('articleContainer');
-      const notFound = document.getElementById('notFound');
+      const articleTitle = document.getElementById("articleTitle");
+      const articleCategory = document.getElementById("articleCategory");
+      const articleMeta = document.getElementById("articleMeta");
+      const articleBody = document.getElementById("articleBody");
+      const articleContainer = document.getElementById("articleContainer");
+      const notFound = document.getElementById("notFound");
 
       if (!slug) {
-        articleContainer.style.display = 'none';
-        notFound.style.display = 'block';
-        notFound.textContent = 'No article slug was provided.';
+        articleContainer.style.display = "none";
+        notFound.style.display = "block";
+        notFound.textContent = "No article slug was provided.";
         return;
       }
 
       try {
-        const res = await fetch('../posts/posts.json?v=2');
-        if (!res.ok) throw new Error('posts.json not found');
+        const res = await fetch("../posts/posts.json?v=2");
+        if (!res.ok) throw new Error("posts.json not found");
+
         const data = await res.json();
         const posts = data.posts || [];
-        const post = posts.find((item) => item.slug === slug);
+        const post = posts.find(item => item.slug === slug);
 
         if (!post) {
-          articleContainer.style.display = 'none';
-          notFound.style.display = 'block';
-          notFound.textContent = 'Sorry, this article could not be found.';
+          articleContainer.style.display = "none";
+          notFound.style.display = "block";
+          notFound.textContent = "Sorry, this article could not be found.";
           return;
         }
 
-        document.title = post.seoTitle || post.title || 'Finguid Blog';
-        articleTitle.textContent = post.title || 'Untitled article';
-        articleCategory.textContent = (post.category || 'Article').toUpperCase();
-        articleMeta.innerHTML = `<span>${post.authorName || 'Finguid Editorial'}</span><span>${formatDate(post.createdAt)}</span><span>${post.calculatorName || 'Calculator Guides'}</span>`;
+        document.title = post.seoTitle || post.title || "Finguid Blog";
+        articleTitle.textContent = post.title || "Untitled article";
+        articleCategory.textContent = (post.category || "Article").toUpperCase();
 
-        const featuredImageUrl = post.featuredImageUrl;
+        articleMeta.innerHTML = `
+          <span>${post.authorName || "Finguid Editorial"}</span>
+          <span>${formatDate(post.createdAt)}</span>
+          <span>${post.calculatorName || "Calculator Guide"}</span>
+        `;
+
+        const featuredImageUrl = post.featuredImageUrl || "";
         const featuredImageHtml = featuredImageUrl
-          ? `<img src="${featuredImageUrl}" alt="${post.title || 'Article image'}" loading="lazy">`
-          : '';
+          ? `<img src="${featuredImageUrl}" alt="${post.title || "Article image"}" loading="lazy">`
+          : "";
 
-        articleBody.innerHTML = featuredImageHtml + (post.bodyHtml || '<p>No content available.</p>');
+        articleBody.innerHTML = featuredImageHtml + (post.bodyHtml || "<p>No content available.</p>");
 
         if (post.calculatorUrl && post.calculatorName) {
-          const callout = document.createElement('div');
-          callout.className = 'calc-callout';
-          callout.innerHTML = `<strong>Helpful tool</strong>Continue planning with the <a href="${post.calculatorUrl}" target="_blank" rel="noopener noreferrer">${post.calculatorName}</a>.`;
+          const callout = document.createElement("div");
+          callout.className = "calc-callout";
+          callout.innerHTML = `
+            <strong>Helpful tool</strong>
+            Continue planning with the
+            <a href="${post.calculatorUrl}" target="_blank" rel="noopener noreferrer">${post.calculatorName}</a>.
+          `;
           articleBody.appendChild(callout);
         }
       } catch (error) {
         console.error(error);
-        articleContainer.style.display = 'none';
-        notFound.style.display = 'block';
-        notFound.textContent = 'There was a problem loading this article.';
+        articleContainer.style.display = "none";
+        notFound.style.display = "block";
+        notFound.textContent = "There was a problem loading this article.";
       }
     }
 
