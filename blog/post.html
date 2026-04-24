@@ -134,6 +134,12 @@
       transform: translateY(-1px);
     }
 
+    .icon-btn.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #ffffff;
+    }
+
     .article-hero {
       padding: 1.5rem 0 1rem;
       border-bottom: 1px solid var(--border);
@@ -293,6 +299,12 @@
       text-decoration: none !important;
     }
 
+    .assist-note {
+      margin-top: 1rem;
+      font-size: 0.82rem;
+      color: var(--text-light);
+    }
+
     .back-link {
       display: inline-flex;
       align-items: center;
@@ -379,6 +391,8 @@
 
       <div class="top-actions">
         <a class="btn-nav" href="./index.html">All articles</a>
+        <button class="icon-btn" id="voiceToggle" aria-label="Activate voice command" title="Voice command">🎙️</button>
+        <button class="icon-btn" id="ttsToggle" aria-label="Read article aloud" title="Read article aloud">🔊</button>
         <button class="icon-btn" id="themeToggle" aria-label="Toggle theme">◐</button>
       </div>
     </div>
@@ -394,6 +408,7 @@
         Loading content...
       </article>
 
+      <p class="assist-note">Use the speaker button to listen to this article or the microphone for simple voice commands in supported browsers.</p>
       <a class="back-link" href="./index.html">← Back to all articles</a>
     </section>
 
@@ -417,6 +432,8 @@
 
   <script>
     const themeToggle = document.getElementById("themeToggle");
+    const ttsToggle = document.getElementById("ttsToggle");
+    const voiceToggle = document.getElementById("voiceToggle");
     const savedTheme = localStorage.getItem("theme");
 
     if (savedTheme === "light") {
@@ -447,6 +464,132 @@
         month: "long",
         day: "numeric"
       });
+    }
+
+    function getArticleSpeechText() {
+      const title = document.getElementById("articleTitle")?.innerText || "";
+      const meta = document.getElementById("articleMeta")?.innerText || "";
+      const body = document.getElementById("articleBody")?.innerText || "";
+      return `${title}. ${meta}. ${body}`.replace(/\s+/g, " ").trim();
+    }
+
+    let isSpeaking = false;
+
+    function stopSpeech() {
+      if (!("speechSynthesis" in window)) return;
+      window.speechSynthesis.cancel();
+      isSpeaking = false;
+      if (ttsToggle) ttsToggle.classList.remove("active");
+    }
+
+    if (ttsToggle) {
+      ttsToggle.addEventListener("click", () => {
+        if (!("speechSynthesis" in window)) {
+          alert("Text-to-speech is not supported in this browser.");
+          return;
+        }
+
+        if (isSpeaking) {
+          stopSpeech();
+          return;
+        }
+
+        const text = getArticleSpeechText();
+        if (!text) return;
+
+        window.speechSynthesis.cancel();
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.rate = 1;
+        utterance.pitch = 1;
+        utterance.onend = () => {
+          isSpeaking = false;
+          ttsToggle.classList.remove("active");
+        };
+
+        isSpeaking = true;
+        ttsToggle.classList.add("active");
+        window.speechSynthesis.speak(utterance);
+      });
+    }
+
+    if (voiceToggle) {
+      const SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+
+      if (!SpeechRecognition) {
+        voiceToggle.addEventListener("click", () => {
+          alert("Voice commands are not supported in this browser. Try Chrome or Edge.");
+        });
+      } else {
+        const recognition = new SpeechRecognition();
+        recognition.lang = "en-US";
+        recognition.interimResults = false;
+        recognition.maxAlternatives = 1;
+        let listening = false;
+
+        function normalize(text) {
+          return text.toLowerCase().trim();
+        }
+
+        function handleVoiceCommand(text) {
+          const t = normalize(text);
+
+          if (t.includes("read article") || t.includes("read this article") || t.includes("start reading")) {
+            ttsToggle?.click();
+            return;
+          }
+
+          if (t.includes("stop reading") || t.includes("pause reading") || t === "stop") {
+            stopSpeech();
+            return;
+          }
+
+          if (t.includes("go to blog") || t.includes("all articles")) {
+            window.location.href = "./index.html";
+            return;
+          }
+
+          if (t.includes("mortgage calculator")) {
+            window.open("https://www.finguid.com/mortgage-calculator", "_blank", "noopener,noreferrer");
+            return;
+          }
+
+          if (t.includes("investment calculator")) {
+            window.open("https://www.finguid.com/investment-calculator", "_blank", "noopener,noreferrer");
+            return;
+          }
+
+          alert("Command not recognized. Try: read article, stop reading, go to blog, open mortgage calculator, or open investment calculator.");
+        }
+
+        recognition.addEventListener("result", (event) => {
+          const transcript = event.results[0][0].transcript;
+          handleVoiceCommand(transcript);
+        });
+
+        recognition.addEventListener("end", () => {
+          listening = false;
+          voiceToggle.classList.remove("active");
+        });
+
+        voiceToggle.addEventListener("click", () => {
+          if (listening) {
+            recognition.stop();
+            listening = false;
+            voiceToggle.classList.remove("active");
+            return;
+          }
+
+          try {
+            recognition.start();
+            listening = true;
+            voiceToggle.classList.add("active");
+          } catch (e) {
+            console.error(e);
+            listening = false;
+            voiceToggle.classList.remove("active");
+          }
+        });
+      }
     }
 
     async function loadPost() {
